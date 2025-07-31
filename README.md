@@ -15,6 +15,18 @@ yo code
  pnpm
 ```
 
+- Trouble shooting
+
+Delete
+
+```json
+"preLaunchTask": "${defaultBuildTask}"
+```
+
+## Start the extension
+
+Menu bar -> Run -> Start debugging
+
 ## Add React project as the UI part
 
 ```sh
