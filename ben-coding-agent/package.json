@@ -30,9 +30,10 @@
     "views": {
       "ben-coding-agent": [
         {
+          "icon": "assets/icons/logo.svg",
           "type": "webview",
-          "id": "bin-coding-agent.SidebarProvider",
-          "name": "%views.sidebar.name%"
+          "id": "ben-coding-agent.SidebarProvider",
+          "name": "Ben Coding Agent"
         }
       ]
     }
