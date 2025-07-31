@@ -87,8 +87,9 @@ Implement resolveWebviewView in src/AgentWebViewProvider.ts
 
 Modify ben-coding-agent/agent-webview/vite.config.ts, tell vite don't add hash to the filenames
 
-```sh
+## Post message
 
+```sh
 pnpm --filter agent-webview add react-use
 pnpm --filter agent-webview add @types/vscode-webview
 ```

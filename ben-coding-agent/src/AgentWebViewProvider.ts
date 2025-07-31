@@ -1,7 +1,16 @@
 import * as vscode from "vscode";
+import { Task } from "./task";
+import { ApiConfiguration } from "./apiHandler";
 
 export class AgentWebViewProvider implements vscode.WebviewViewProvider {
   private webview?: vscode.Webview;
+  private currentTask?: Task;
+  private apiConfiguration: ApiConfiguration = {
+    modal: "gpt-4.1",
+    apiKey: "",
+    apiUrl: "ddddddd",
+  };
+
   constructor(private context: vscode.ExtensionContext) {}
 
   public resolveWebviewView(
@@ -37,6 +46,8 @@ export class AgentWebViewProvider implements vscode.WebviewViewProvider {
     // Listen for messages from the webview
     webviewView.webview.onDidReceiveMessage((message: string) => {
       vscode.window.showInformationMessage(message);
+      this.currentTask = new Task(this.apiConfiguration, message);
+      this.currentTask.start();
     });
   }
 
