@@ -46,7 +46,7 @@ export class AgentWebViewProvider implements vscode.WebviewViewProvider {
     // Listen for messages from the webview
     webviewView.webview.onDidReceiveMessage((message: string) => {
       vscode.window.showInformationMessage(message);
-      this.currentTask = new Task(this.apiConfiguration, message);
+      this.currentTask = new Task(this, this.apiConfiguration, message);
       this.currentTask.start();
     });
   }

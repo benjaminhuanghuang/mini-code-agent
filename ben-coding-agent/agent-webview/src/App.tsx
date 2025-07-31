@@ -11,7 +11,7 @@ function App() {
   const input = useRef<HTMLInputElement>(null);
 
   useEvent("message", (event: MessageEvent<string>) => {
-    setMessage(event.data);
+    setMessage((prev) => prev + event.data);
   });
 
   const postMessage = () => {

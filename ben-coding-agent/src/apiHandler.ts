@@ -17,11 +17,21 @@ export class ApiHandler {
       baseURL: this.apiConfig.apiUrl,
       apiKey: this.apiConfig.apiKey,
     });
-    const response: OpenAI.Chat.Completions.ChatCompletionCreateParamsStreaming =
+    const request: OpenAI.Chat.Completions.ChatCompletionCreateParamsStreaming =
       {
         stream: true,
         model: this.apiConfig.modal,
         messages: [{ role: "system", content: systemPrompt }, ...messages],
       };
+
+    const { data: completion } = await openai.chat.completions
+      .create(request)
+      .withResponse();
+
+    for await (const chunk of completion) {
+      if (chunk.choices[0].delta) {
+        yield chunk.choices[0].delta.content;
+      }
+    }
   }
 }
