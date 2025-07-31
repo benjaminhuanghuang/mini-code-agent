@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useEvent } from "react-use";
+import { MarkdownHooks } from "react-markdown";
 
 import "./App.css";
 
@@ -28,9 +29,7 @@ function App() {
         <input type="text" ref={input} />
         <button onClick={postMessage}>Post Message</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <MarkdownHooks>{message}</MarkdownHooks>
     </>
   );
 }
