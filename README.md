@@ -10,9 +10,15 @@ https://www.bilibili.com/video/BV1DVgczfE6Z
 npm install --global yo generator-code
 
 yo code
- ts
- esbuild
- pnpm
+  ts
+  esbuild
+  pnpm
+
+
+cd project-root
+pnpm approve-builds
+  select esbuild
+  approve = true
 ```
 
 - Trouble shooting
