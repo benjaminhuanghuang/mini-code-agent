@@ -29,6 +29,12 @@ Delete
 "preLaunchTask": "${defaultBuildTask}"
 ```
 
+Build project
+
+```sh
+pnpm run compile
+```
+
 ## Start the extension
 
 Menu bar -> Run -> Start debugging
@@ -62,4 +68,27 @@ Add ben-coding-agent/package.json
         }
       ]
     }
+```
+
+Modify ben-coding-agent/src/extension.ts
+
+```js
+export function activate(context: vscode.ExtensionContext) {
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(
+      "ben-coding-agent.SidebarProvider",
+      new AgentWebViewProvider(context)
+    )
+  );
+}
+```
+
+Implement resolveWebviewView in src/AgentWebViewProvider.ts
+
+Modify ben-coding-agent/agent-webview/vite.config.ts, tell vite don't add hash to the filenames
+
+```sh
+
+pnpm --filter agent-webview add react-use
+pnpm --filter agent-webview add @types/vscode-webview
 ```

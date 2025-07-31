@@ -6,11 +6,20 @@ import { AgentWebViewProvider } from "./AgentWebViewProvider";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const provider = new AgentWebViewProvider(context);
+  // show webview
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
       "ben-coding-agent.SidebarProvider",
-      new AgentWebViewProvider(context)
+      provider
     )
+  );
+
+  // send message to backend
+  context.subscriptions.push(
+    vscode.commands.registerCommand("ben-coding-agent.helloWorld", () => {
+      provider.postMessage("Hello World from Ben Coding Agent!");
+    })
   );
 }
 
